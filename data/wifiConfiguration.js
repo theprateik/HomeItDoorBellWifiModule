@@ -23,5 +23,6 @@ function saveWiFiConfig() {
       ssid: ssid,
       password: password
   }
+  window.location = "#savingModal";
   connection.send(JSON.stringify(data));
 }

@@ -8,7 +8,7 @@ bool handleFileRead(String path);
 String getContentType(String filename);
 void startWebSocket();
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t length);
-void saveWiFiConfig(JsonDocument doc);
+void saveWiFiConfig(uint8_t num, JsonDocument doc);
 
 void startWebServer() 
 {
@@ -82,7 +82,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t length)
       Serial.print("SSID FROM FROM: ");
       const char *ssi = doc["ssid"];
       Serial.println(ssi);
-      saveWiFiConfig(doc);
+      saveWiFiConfig(num, doc);
       WebSocketServer.sendTXT(num, "Saved.");
 
       File file = SPIFFS.open(WiFiConfigPath, "r");
@@ -92,7 +92,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t length)
   }
 }
 
-void saveWiFiConfig(JsonDocument doc)
+void saveWiFiConfig(uint8_t num, JsonDocument doc)
 {
   SPIFFS.remove(WiFiConfigPath);
 
@@ -106,6 +106,10 @@ void saveWiFiConfig(JsonDocument doc)
   if(serializeJson(doc, file) == 0)
   {
     Serial.println("Failed to write to file.");
+  }
+  else 
+  {
+    WebSocketServer.sendTXT(num, "Configuration Saved.");
   }
 
   file.close();

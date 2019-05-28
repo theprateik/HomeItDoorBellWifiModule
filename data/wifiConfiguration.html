@@ -8,17 +8,30 @@
 </head>
 
 <body>
-    <div>
-        <label for="txtSsid">SSID</label>
-        <input type="text" id="txtSsid" />
-    </div>
-    <div>
-        <label for="txtPassword">Password</label>
-        <input type="password" id="txtPassword" />
-    </div>
-    <div>
-        <button type="button" onclick="saveWiFiConfig();">Save</button>
+    <div style="width: 50%; min-width: 500px; max-width: 1000px; margin: auto; margin-top: 20px;">
+        <div style="text-align: center;">
+            <h2>Home It Door Bell<h2>
+                    <h4>Network Configuration</h4>
+        </div>
+        <div class="form-group">
+            <label for="txtSsid" class="form-label">SSID</label>
+            <input type="text" id="txtSsid" class="form-input" placeholder="SSID Name" />
+        </div>
+        <div class="form-group">
+            <label for="txtPassword" class="form-label">Paraphrase</label>
+            <input type="password" id="txtPassword" class="form-input" placeholder="Paraphrase" />
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary" onclick="saveWiFiConfig();" style="width: 100px;">Save</button>
+        </div>
     </div>
 </body>
 
+<div class="modal modal-sm" id="savingModal"><a class="modal-overlay" href="#modals-sizes" aria-label="Close"></a>
+    <div class="modal-container" role="document" style="height: 50px; line-height: 50px;">
+      <!-- <div class="modal-header"><a class="btn btn-clear float-right" href="#modals-sizes" aria-label="Close"></a>
+      </div> -->
+      Saving...
+    </div>
+  </div>
 </html>
