@@ -87,5 +87,5 @@ void websocketClientLoop()
 
 void ringBell()
 {
-    webSocketClient.sendTXT("{\"arguments\":[\"Door\",\"Someone is Ringing the bell.\"],\"invocationId\":\"1\",\"target\":\"Send\",\"type\":1})\x1E");
+    webSocketClient.sendTXT("{\"arguments\":[\"Door\",\"Someone is Ringing the bell.\"],\"invocationId\":\"1\",\"target\":\"SendMessage\",\"type\":1})\x1E"); // TODO: invocation id must be incremental
 }
