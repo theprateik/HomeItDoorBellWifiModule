@@ -5,9 +5,11 @@
 #include "NetworkFunctions.h"
 #include "HubFunctions.h"
 
+int period = 1000;
+unsigned long time_now = 0;
+
 int inputPin = 5;
 int outputPin = LED_BUILTIN;
-bool isProcessing = false;
 
 void setup()
 {
@@ -23,7 +25,7 @@ void setup()
   startNetwork();
   startWebServer();
 
-  if (NETWORK_AS_CLIENT == true)
+  if (NETWORK_AS_STATION == true)
   {
     Serial.println("Staring the Hub");
     startHub();
@@ -36,21 +38,21 @@ void loop()
   {
     WebSocketServer.loop();
   }
-  else if (NETWORK_AS_CLIENT == true)
+  else if (NETWORK_AS_STATION == true)
   {
     int sensorValue = digitalRead(inputPin);
     websocketClientLoop();
-    if (isProcessing == false && sensorValue > 0) 
+    if (millis() > time_now + period && sensorValue > 0)
     {
-      isProcessing = true;
-      digitalWrite(outputPin, LOW);
-      // TODO: write code to ring bell here
-      ringBell();
+        time_now = millis();
 
-      isProcessing = false;
+        Serial.println(sensorValue);
+        
+        digitalWrite(outputPin, LOW);
+        
+        ringBell();
     }
     digitalWrite(outputPin, HIGH);
   }
-
   WebServer.handleClient();
 }

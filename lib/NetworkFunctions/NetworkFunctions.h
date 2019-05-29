@@ -9,7 +9,7 @@
 #include "Constants.h"
 
 extern bool NETWORK_AS_AP;
-extern bool NETWORK_AS_CLIENT;
+extern bool NETWORK_AS_STATION;
 
 void startNetwork();
 

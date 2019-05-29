@@ -1,7 +1,7 @@
 #include "NetworkFunctions.h"
 
 bool NETWORK_AS_AP = false;
-bool NETWORK_AS_CLIENT = false;
+bool NETWORK_AS_STATION = false;
 WiFiConfig config;
 
 bool loadConfiguration();
@@ -30,7 +30,7 @@ void startNetwork()
       Serial.println();
       delay(1000);
     }
-    NETWORK_AS_CLIENT = true;
+    NETWORK_AS_STATION = true;
 
     Serial.print("IP Address: \t");
     Serial.println(WiFi.localIP());
