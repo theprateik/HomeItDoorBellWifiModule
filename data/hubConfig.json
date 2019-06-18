@@ -1,6 +1,6 @@
 {
     "useSsl": false,
     "host": "192.168.1.213",
-    "port": 80,
+    "port": 9000,
     "hub": "/doorbellhub"
 }

@@ -1,4 +1,3 @@
-#include <ESP8266WiFi.h>
 #include "SpiffsFunctions.h"
 #include "WebServerFunctions.h"
 #include "NetworkFunctions.h"
